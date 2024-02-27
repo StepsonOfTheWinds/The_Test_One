@@ -18,9 +18,7 @@ public class ConfessionFence {
 
     public void setFenceLength() {
         Scanner inFenceLength = new Scanner(System.in);
-        Scanner finishIt = new Scanner(System.in);
         int fl;
-        String end;
         System.out.println("Введите длину забора.");
         if (inFenceLength.hasNextInt()) {
             fl = inFenceLength.nextInt();
