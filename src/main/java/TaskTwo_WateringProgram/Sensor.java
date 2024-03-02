@@ -2,9 +2,9 @@ package TaskTwo_WateringProgram;
 
 public class Sensor {
 
-    double humidity;
-    double humidityMeasurement() {
-        humidity = Math.random();
+    public double humidity;
+    public double humidityMeasurement() {
+        this.humidity = Math.random();
         return humidity;
     }
 }
