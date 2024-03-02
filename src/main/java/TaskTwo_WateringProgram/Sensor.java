@@ -1,10 +1,26 @@
 package TaskTwo_WateringProgram;
 
-public class Sensor {
+class Sensor {
 
-    public double humidity;
-    public double humidityMeasurement() {
-        this.humidity = Math.random();
+    double humidity;
+
+    double measurement() {
+        humidity = Math.random();
         return humidity;
     }
 }
+
+/*Ниже - вариант на тот случай, если датчик возвращает проценты как целые числа, а потенциальная влажность
+может падать до 0% (пустыня) или достигать 100% (затопленная комната).
+ */
+//    int measurement() {
+//        double dHumidity = Math.random() * 101;
+//        if (dHumidity >= 1) {
+//            humidity = (int) (Math.floor(dHumidity));
+//        }
+//        if (dHumidity <= 1 & dHumidity >= 0) {
+//            humidity = 0;
+//        }
+//        return humidity;
+//    }
+//}

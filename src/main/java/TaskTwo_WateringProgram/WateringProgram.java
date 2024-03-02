@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
-import java.lang.Exception;
+
 
 public class WateringProgram {
 
@@ -23,7 +23,7 @@ public class WateringProgram {
     Ожидаю от программы,что после проверки всех данных она выведет сообщение с датой, когда надо поливать кактус.
     */
 
-    public void toGetLastDate() {
+    void toGetLastDate() {
         try {
             System.out.println("Введите дату последнего полива в формате 'дд.мм.гггг':");
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -35,11 +35,9 @@ public class WateringProgram {
         }
     }
 
-    public void toGetCurrentMonth() {
+    void toGetCurrentMonth() {
         Date current_date = new Date();
         currentMonth = current_date.getMonth();
-        //Здесь намеренно использована устаревшая реализация класса Date вместо класса Calendar, потому что класс
-        //Calendar не поддерживает Юлианский календарь, принятый в РФ.
     }
 
     public static void main(String[] args) {
@@ -61,19 +59,18 @@ public class WateringProgram {
             calendar.setTime(wP.lastWateringDate);
             calendar.add(Calendar.HOUR,168);
             wP.nextWateringDate = calendar.getTime();
-        }else{
-            if (sensor.humidityMeasurement()<0.3){
-                wP.nextWateringDate=wP.currentDate;
-                wP.humidityFlag=true;
+        } else {
+            if (sensor.measurement()<0.3) {
+                wP.nextWateringDate = wP.currentDate;
+                wP.humidityFlag = true;
             }
         }
-
-        //ага!
 
         if(wP.currentDate.getTime()>wP.nextWateringDate.getTime()) wP.nextWateringDate=wP.currentDate;
 
         if(wP.humidityFlag) {
             System.out.println("Поливать пока не нужно.");
+
         } else {
             System.out.println("Дата следующего полива: " + new SimpleDateFormat("dd.MM.yyyy").format(wP.nextWateringDate) + ".");
         }
