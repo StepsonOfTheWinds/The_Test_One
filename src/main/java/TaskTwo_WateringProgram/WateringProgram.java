@@ -11,7 +11,7 @@ public class WateringProgram {
 
     Date lastWateringDate;
     int currentMonth;
-    boolean humidityFlag = false;
+    boolean summerWateringFlag = false;
     Date currentDate = new Date();
     Date nextWateringDate = new Date();
 
@@ -62,15 +62,18 @@ public class WateringProgram {
         } else {
             if (sensor.measurement()<0.3) {
                 wP.nextWateringDate = wP.currentDate;
-                wP.humidityFlag = true;
+                wP.summerWateringFlag = true;
             }
         }
 
-        if(wP.currentDate.getTime()>wP.nextWateringDate.getTime()) wP.nextWateringDate=wP.currentDate;
+        if(wP.currentDate.getTime()>wP.nextWateringDate.getTime()) wP.nextWateringDate = wP.currentDate;
 
-        if(wP.humidityFlag) {
-            System.out.println("Поливать пока не нужно.");
-
+        if(wP.summerWateringFlag) {
+            if((wP.lastWateringDate).before(wP.currentDate)) {
+                System.out.println("Сегодня поливка не требуется.");
+            } else {
+                System.out.println("Дата следующего полива: " + new SimpleDateFormat("dd.MM.yyyy").format(wP.nextWateringDate) + ".");
+            }
         } else {
             System.out.println("Дата следующего полива: " + new SimpleDateFormat("dd.MM.yyyy").format(wP.nextWateringDate) + ".");
         }
