@@ -48,8 +48,8 @@ public class ConfessionFence {
     }
 
     public static void main(String[] args) {
-        ConfessionFence FirstLove = new ConfessionFence();
-        FirstLove.setFenceLength();
-        FirstLove.mainCalculation(FirstLove.fenceLength);
+        ConfessionFence firstLove = new ConfessionFence();
+        firstLove.setFenceLength();
+        firstLove.mainCalculation(firstLove.fenceLength);
     }
 }
